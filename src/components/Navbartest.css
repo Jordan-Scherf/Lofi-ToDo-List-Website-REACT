@@ -1,0 +1,31 @@
+/* NavBar.css */
+nav {
+    background-color: var(--bar-color); /* Use a custom property for the bar color */
+    padding: 10px; /* Add some padding to the top and bottom */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  li {
+    margin: 0 100px; /* Adjust the margin to bring items closer */
+    transition-duration: .5s;
+    color:black
+    
+  }
+
+  li:hover{
+    color: red;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  
