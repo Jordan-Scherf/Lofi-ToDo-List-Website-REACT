@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ListGroup, Button, Card, Form } from 'react-bootstrap';
+import { Button, Paper, TextField, List, ListItem, ListItemText, IconButton, Typography } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './ToDoList.css';
 
 const TodoList = () => {
@@ -26,46 +27,58 @@ const TodoList = () => {
     <div className="todo-list-container">
       <div className='todo-list-box-border-wrap'>
         <div className="todo-list-box">
-          <Card>
-            <Card.Body>
-              <Card.Title><h1>Todo List</h1></Card.Title>
-              <ListGroup variant="flush">
+          <Paper elevation={3} style={{ padding: '20px', boxSizing: 'border-box', backgroundColor: 'rgba(255, 255, 255, 0.0)' }}>
+            <Typography variant="h3" component="div" align="center">
+              Todo List
+            </Typography>
+            <div className="todo-list">
+              <List style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
                 {tasks.map((task) => (
-                  <div className="task-item" key={task.id}>
-                    <h2 className="task-text">{task.text}</h2>
-                    <p className="task-description">{task.description}</p>
-                    <i
-                      className="bi bi-x-circle-fill delete-icon"
-                      onClick={() => handleDeleteTask(task.id)}
-                    ></i>
-                  </div>
+                  <ListItem key={task.id} style={{ border: '1px solid #ccc', borderRadius: '5px', marginBottom: '10px', backgroundColor: '#ccc'}}>
+                    <ListItemText
+                      primary={task.text}
+                      secondary={task.description}
+                      style={{ color: 'black' }}
+                    />
+                    <IconButton onClick={() => handleDeleteTask(task.id)} aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItem>
                 ))}
-              </ListGroup>
-              <div className="todo-list-add">
-                <Form>
-                  <Form.Group controlId="newTask">
-                    <Form.Control
-                      type="text"
-                      placeholder="New Task"
-                      value={newTask}
-                      onChange={(e) => setNewTask(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="newTaskDescription">
-                    <Form.Control rows={5}
-                      as="textarea"
-                      placeholder="Task Description"
-                      value={newTaskDescription}
-                      onChange={(e) => setNewTaskDescription(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Button className="glow-on-hover" variant="primary" onClick={handleAddTask}>
-                    Add Task
-                  </Button>
-                </Form>
-              </div>
-            </Card.Body>
-          </Card>
+              </List>
+            </div>
+            <div className="todo-list-add">
+              <form>
+                <TextField
+                  id="newTask"
+                  label="New Task"
+                  variant="filled"
+                  fullWidth
+                  value={newTask}
+                  onChange={(e) => setNewTask(e.target.value)}
+                  style={{ marginBottom: '10px', backgroundColor: '#ccc' }}
+                  InputLabelProps={{ style: { color: 'black' } }}
+                  InputProps={{ style: { color: 'black', backgroundColor: '#ccc' } }}
+                />
+                <TextField
+                  id="newTaskDescription"
+                  label="Task Description"
+                  variant="filled"
+                  multiline
+                  rows={5}
+                  fullWidth
+                  value={newTaskDescription}
+                  onChange={(e) => setNewTaskDescription(e.target.value)}
+                  style={{ marginBottom: '10px', backgroundColor: '#ccc' }}
+                  InputLabelProps={{ style: { color: 'black' } }}
+                  InputProps={{ style: { color: 'black', backgroundColor: '#ccc' } }}
+                />
+                <Button className="glow-on-hover" variant="contained" color="primary" onClick={handleAddTask}>
+                  Add Task
+                </Button>
+              </form>
+            </div>
+          </Paper>
         </div>
       </div>
     </div>
@@ -73,6 +86,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-
-
-

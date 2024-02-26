@@ -10,7 +10,7 @@ function App() {
       <NavBar/>
       <div className='MainPage'>
       <TodoList className="MainPage-Item"/>
-      <MovieClip className="MainPage-Item"/>
+      <MovieClip className="MainPage-Item"/> 
       </div>
     </div>
   );

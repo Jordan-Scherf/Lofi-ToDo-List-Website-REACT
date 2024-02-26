@@ -10,7 +10,7 @@
 
 .todo-list-box {
     border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
+    
     padding: 30px;
     color: white;
 }
@@ -21,10 +21,6 @@
     min-width: 400px;
     background: linear-gradient(to top right, maroon, purple);
     padding: 3px;
-}
-
-.todo-list-box:hover {
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Style for the task items */
